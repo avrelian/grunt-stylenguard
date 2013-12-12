@@ -1,2 +1,2 @@
-Stylenguard
+Style'n'guard
 ===========
