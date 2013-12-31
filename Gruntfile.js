@@ -15,8 +15,8 @@ module.exports = function(grunt) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>'
+        'tasks/**/*.js',
+        'specs/**/*.js'
       ],
       options: {
         jshintrc: '.jshintrc'
@@ -25,32 +25,40 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      specs: ['specs/tmp']
     },
 
     // Configuration to be run (and then tested).
     stylenguard: {
-      default_options: {
+      process: {
         options: {
+          // selector for the root element of a block
+          rootSelector: '.block'
         },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+        files: [{
+          expand: true,
+          cwd: 'specs/fixtures/',
+          src: ['**/*.css'],
+          dest: 'specs/tmp/',
+          ext: '.css'
+        }]
       }
     },
 
     // Unit tests.
-    nodeunit: {
-      tests: ['test/*_test.js']
+    jasmine_node: {
+      sdfdsf: {
+        specNameMatcher: "./spec", // load only specs containing specNameMatcher
+        projectRoot: ".",
+        requirejs: true,
+        forceExit: true,
+        jUnit: {
+          report: false,
+          savePath : "./build/reports/jasmine/",
+          useDotNotation: true,
+          consolidate: true
+        }
+      }
     }
 
   });
@@ -61,13 +69,13 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-jasmine-node');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'stylenguard', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'stylenguard', 'jasmine_node']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['test']);
 
 };

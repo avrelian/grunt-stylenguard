@@ -1,0 +1,7 @@
+.top.block .title {
+    color: red;
+}
+
+.top .block .title {
+    color: black;
+}
