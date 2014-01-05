@@ -1,3 +1,5 @@
+# WORK IN PROGRESS! PLEASE DO NOT USE!
+
 # grunt-stylenguard
 
 > postprocessor for CSS encapsulation
