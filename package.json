@@ -1,8 +1,8 @@
 {
   "name": "grunt-stylenguard",
-  "description": "postprocessor for CSS encapsulation",
+  "description": "A grunt task for Stylenguard (postprocessor for CSS encapsulation)",
   "version": "0.1.0",
-  "homepage": "https://github.com/avrelian/Stylenguard",
+  "homepage": "https://github.com/avrelian/grunt-stylenguard",
   "author": {
     "name": "Sergey Radchenko",
     "email": "avrelian@yandex.ru",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/avrelian/Stylenguard.git"
+    "url": "git@github.com:avrelian/grunt-stylenguard.git"
   },
   "bugs": {
-    "url": "https://github.com/avrelian/Stylenguard/issues"
+    "url": "https://github.com/avrelian/grunt-stylenguard/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/avrelian/Stylenguard/blob/master/LICENSE-MIT"
+      "url": "https://github.com/avrelian/grunt-stylenguard/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -32,9 +32,11 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt": "~0.4.2",
-    "grunt-jasmine-node": "~0.1.0"
+    "grunt-jasmine-node": "~0.1.0",
+    "diff": "~1.0.8"
   },
   "dependencies": {
+    "rework": "~0.18.1",
     "slick": "~1.10.4"
   },
   "peerDependencies": {
